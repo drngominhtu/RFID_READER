@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include <SPI.h>
 #include <MFRC522.h>
 
@@ -16,28 +15,6 @@ enum Mode {
 };
 
 Mode currentMode = READ_MODE;
-
-// Cấu trúc dữ liệu để lưu thông tin thẻ
-struct CardData {
-  byte uid[10];           // UID thẻ (tối đa 10 bytes)
-  byte uidSize;           // Kích thước UID
-  byte data[16];          // Dữ liệu từ block 4
-  char cardType[20];      // Loại thẻ
-  bool isValid;           // Dữ liệu có hợp lệ không
-};
-
-CardData savedCardData;   // Dữ liệu thẻ đã lưu
-
-// Khai báo các hàm
-void showMenu();
-void handleRFID();
-void readCard();
-void writeCard();
-bool readMifareBlock(byte blockAddr, byte* data);
-bool writeMifareBlock(byte blockAddr, byte* data);
-void showSavedData();
-void printSavedData();
-void exportDataToTxt();
 
 // Cấu trúc dữ liệu để lưu thông tin thẻ
 struct CardData {
